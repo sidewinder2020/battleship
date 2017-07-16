@@ -43,7 +43,7 @@ attr_reader :player_game_board
   end
 
   def validate_coord_2(coord_1, coord_2)
-    if !@player_game_board.include?[coord_2] || @player_game_board[coord_1] == @player_game_board[coord_2] || second_coord[coord_1].none? { |coord| coord == coord_2 }
+    if !@player_game_board.include?[coord_2] || [coord_1] == [coord_2] || second_coord[coord_1].none? { |coord| coord == coord_2 }
       return
         puts "That is not a valid coordinate"
     else
@@ -61,7 +61,7 @@ attr_reader :player_game_board
   end
 
   def validate_ship_2_coord_2(coord_1, coord_2)
-    if !@player_game_board.include?[coord_2] || @player_game_board[coord_1] == @player_game_board[coord_2] || second_coord[coord_1].none? { |coord| coord == coord_2 } || @player_game_board[coord_2] == true
+    if !@player_game_board.include?[coord_2] || [coord_1] == [coord_2] || second_coord[coord_1].none? { |coord| coord == coord_2 } || @player_game_board[coord_2] == true
       return
         puts "That is not a valid coordinate"
     else
@@ -69,7 +69,9 @@ attr_reader :player_game_board
   end
 
   def validate_ship_2_coord_3(coord_1, coord_2, coord_3)
-
+    if !@player_game_board.include?[coord_3] || coord_1 == coord_3 || coord_2 == coord_3 || @player_game_board[coord_3] == true || third_coord[coord_1].none? { |coord| coord == coord_3}
+      return
+      puts "not a valid coord"
     else
       @player_game_board[coord_3] = true
     end
