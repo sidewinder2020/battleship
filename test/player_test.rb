@@ -19,6 +19,8 @@ class PlayerTest < Minitest::Test
     assert @player.player_game_board["A2"]
   end
 
+  def test_it_
+
 
 
 end
