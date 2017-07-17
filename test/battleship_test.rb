@@ -1,7 +1,7 @@
 require 'minitest/pride'
 require 'minitest/autorun'
 require 'pry'
-require './lib/game'
+require './lib/battleship'
 
 class BattleshipTest < Minitest::Test
 
