@@ -20,7 +20,7 @@ class PlayerTest < Minitest::Test
   end
 
   def test_it_
-
+  end
 
 
 end
