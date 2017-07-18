@@ -54,4 +54,23 @@ attr_reader
   end
   # only call second_ship within game file, it will also place first ship
 
+  def shoot(coord)
+    if coord == false
+      coord = "M"
+      puts "miss!"
+    else
+      coord = "H"
+      puts "hit!"
+  end
+
+  def check_game_board_for_player
+    # (need a passive method to check if all of the squares are holding a value of false - if so, then game over) - this method will be used IMMEDIATELY AFTER the player fires, and again after the computer fires.
+    if @player_game_board.values.none? do |value|
+      value == true
+      puts "The game is over! Skynet has conquered, the cake is a lie."
+      exit
+    else
+      #do nothing
+    end
+
 end

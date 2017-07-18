@@ -5,7 +5,7 @@ module Messages
   end
 
   def instructions
-    puts ""
+    puts "Battleship is a time-honored game that you have the privelege to play.  Both you and the computer start off with your own 'boards', of a 4x4 grid, on which you will each place a 2-space ship and a 3-space ship.  Then the game will begin.  You will begin, and have the chance to fire one shot by entering one coordinate.  If you hit a ship, on the computer's board, then you will receive an 'H', which denotes a hit.  If you miss, however, you will receive an 'M', for a miss, in that particular spot.  DO NOT enter the same coordinates, DO NOT try to break me, DO NOT commit bestiality.  That will be all."
   end
 
   def comp_places_ships_msg
@@ -18,11 +18,15 @@ module Messages
   end
 
   def game_begins_msg
-    "You have placed all your ships, and now.../n the game begins."
+    puts "You have placed all your ships, and now.../n the game begins."
   end
 
-  def request_fire_coordinates_from_player_msg
-    
+  def request_fire_coordinate_from_player_msg
+    puts "You "
+  end
+
+  def player_needs_to_hit_enter_msg
+    "Please hit enter to continue, and for the computer's turn to begin."
   end
 
 end

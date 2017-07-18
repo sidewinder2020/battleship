@@ -77,4 +77,28 @@ attr_reader :player_game_board
     end
   end
 
+  def shoot(coord)
+    board_key_array = []
+    @player_game_board.each_key do |key|
+      board_key_array << key
+    end
+    coord = board_key_array.sample
+    if coord == false
+      coord = "M"
+      puts "miss!"
+    else
+      coord = "H"
+      puts "hit!"
+  end
+
+  def check_game_board_for_computer
+    # (need a passive method to check if all of the squares are holding a value of false - if so, then game over) - this method will be used IMMEDIATELY AFTER the player fires, and again after the computer fires.
+    if @player_game_board.values.none? do |value|
+      value == true
+      puts "The game is over! Skynet has conquered, the cake is a lie."
+      exit
+    else
+      #do nothing
+    end
+
 end
