@@ -1,5 +1,5 @@
 class Computer
-attr_reader
+attr_accessor :computer_game_board
 
   def initialize
     @computer_game_board = {"A1" => false, "A2" => false, "A3" => false, "A4" => false,
@@ -16,7 +16,7 @@ attr_reader
   end
 
   def third_coord
-  { "A1"=>[["A2","A3"],["B1","C1"]],                "A2"=>[["A1","A3"],["B2","C2"]],
+  { "A1"=>[["A2","A3"],["B1","C1"]], "A2"=>[["A1","A3"],["B2","C2"]],
     "A3"=>[["A2","A4"],["B3","C3"]], "A4"=>[["A2","A3"],["B4","C4"]],
     "B1"=>[["A1","C1"],["B2","B3"]], "B2"=>[["B1","B3"],["A2","C2"]],
     "B3"=>[["B2","B4"],["A3","C3"]], "B4"=>[["B2","B3"],["A4","C4"]],
@@ -56,7 +56,6 @@ attr_reader
   # only call second_ship within game file, it will also place first ship
 
   def shoot(coord)
-    #invalid idiot issue
     if coord == false
       coord = "M"
       puts "miss!"

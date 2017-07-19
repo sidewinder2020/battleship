@@ -1,7 +1,7 @@
 require 'pry'
 
 class Player
-attr_reader :player_game_board
+attr_accessor :player_game_board
 
   def initialize
     @player_game_board = {"A1" => false, "A2" => false, "A3" => false, "A4" => false,
@@ -93,7 +93,7 @@ attr_reader :player_game_board
   def check_game_board_for_computer
     if @player_game_board.values.none? do |value|
       value == true
-      puts "The game is over! Skynet has conquered, the cake is a lie."
+      puts "Fatality! Skynet has conquered, the cake is a lie."
       exit
     else
       #do nothing

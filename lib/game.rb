@@ -16,7 +16,8 @@ attr_accessor :computer, :player
     opening_message
     player_choice = gets.chomp
     if player_choice == "p"
-      #next method
+      puts "Lllllet's get ready to rumble!"
+      comp_places_ships
     elsif player_choice == "i"
       instructions
     elsif player_choice == "q"
@@ -56,7 +57,10 @@ attr_accessor :computer, :player
   request_fire_coordinate_from_player_msg
   coord = gets.chomp
   computer.shoot(coord)
-  computer.check_game_board_for_player
+  end
+
+  def check_game_board_for_player_runner
+    computer.check_game_board_for_player
   end
 
   def show_map_to_player_after_player_shot
@@ -68,6 +72,9 @@ attr_accessor :computer, :player
   def computer_fire_sequence(coord)
   # computer fires @ random
     player.shoot(coord)
+  end
+
+  def check_game_board_for_computer_runner
     player.check_game_board_for_computer
   end
 
