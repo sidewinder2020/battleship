@@ -41,7 +41,7 @@ attr_accessor :computer, :player
   player_prompted_for_3rd_ship_msg
   end
 
-  def player_places_second_ship
+  def player_places_second_ship(coord_1, coord_2, coord_3)
   # coords for 3-space ship are entered and validated
   player.validate_ship_2_coord_1(coord_1)
   player.validate_ship_2_coord_2(coord_1, coord_2)
@@ -74,10 +74,6 @@ attr_accessor :computer, :player
     #show map to player after computer shot
   end
 
-  end
+end
 
   # (need a passive method to iterate through an array of the ship's coords and check if any are true) - if there are any true values, do nothing, if there aren't, put 2 - space ship is sunk
-
-  # (do the previous method)
-
-end

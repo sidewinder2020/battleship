@@ -86,6 +86,10 @@ attr_reader :player_game_board
     if coord == false
       coord = "M"
       puts "miss!"
+    elsif coord == "M"
+      puts "Missed again!"
+    elsif coord == "H"
+      puts "Don't worry, skynet already sunk that one."
     else
       coord = "H"
       puts "hit!"

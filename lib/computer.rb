@@ -2,7 +2,7 @@ class Computer
 attr_reader
 
   def initialize
-    @player_game_board = {"A1" => false, "A2" => false, "A3" => false, "A4" => false,
+    @computer_game_board = {"A1" => false, "A2" => false, "A3" => false, "A4" => false,
     "B1" => false, "B2" => false, "B3" => false, "B4" => false,
     "C1" => false, "C2" => false, "C3" => false, "C4" => false,
     "D1" => false, "D2" => false, "D3" => false, "D4" => false}
@@ -28,46 +28,50 @@ attr_reader
 
   def first_ship
     board_key_array = []
-    @player_game_board.each_key do |key|
+    @computer_game_board.each_key do |key|
       board_key_array << key
     end
     coord_1 = board_key_array.sample
     coord_2 = second_coord[coord_1].sample
-    @player_game_board[coord_1] = true
-    @player_game_board[coord_2] = true
+    @computer_game_board[coord_1] = true
+    @computer_game_board[coord_2] = true
     return coord_1, coord_2
   end
 
   def second_ship
     board_key_array = []
     coord_1, coord_2 = first_ship
-    @player_game_board.each_key do |key|
+    @computer_game_board.each_key do |key|
       if key == false
         board_key_array << key
       end
     end
     ship_2_coord_1 = board_key_array.sample
-    @player_game_board[ship_2_coord_1] = true
-    last_2_coords = third_coord[ship_2_coord_1].sample unless @player_game_board[last_2_coords[0]] == false || @player_game_board[last_2_coords[1]] == false
-    @player_game_board[last_2_coords[0]] = true
-    @player_game_board[last_2_coords[1]] = true
+    @computer_game_board[ship_2_coord_1] = true
+    last_2_coords = third_coord[ship_2_coord_1].sample unless @computer_game_board[last_2_coords[0]] == false || @computer_game_board[last_2_coords[1]] == false
+    @computer_game_board[last_2_coords[0]] = true
+    @computer_game_board[last_2_coords[1]] = true
   end
   # only call second_ship within game file, it will also place first ship
 
   def shoot(coord)
+    #invalid idiot issue
     if coord == false
       coord = "M"
       puts "miss!"
-    else
-      coord = "H"
+    elsif !@computer_game_board.include?[coord]
+      puts "THAT'S NOT EVEN A COORDINATE!"
+    elsif coord == "M"
+      puts "You already fired there dumbass"
+    else coord = "H"
       puts "hit!"
   end
 
   def check_game_board_for_player
     # (need a passive method to check if all of the squares are holding a value of false - if so, then game over) - this method will be used IMMEDIATELY AFTER the player fires, and again after the computer fires.
-    if @player_game_board.values.none? do |value|
+    if @computer_game_board.values.none? do |value|
       value == true
-      puts "The game is over! Skynet has conquered, the cake is a lie."
+      puts "The game is over! You won! Are you proud of yourself now?"
       exit
     else
       #do nothing
