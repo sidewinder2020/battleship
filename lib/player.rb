@@ -28,11 +28,6 @@ attr_reader :player_game_board
     "D3"=>[["D2","D4"],["C3","B3"]], "D4"=>[["B4","C4"],["D2","D3"]]}
   end
 
-  def place_ship(coord_1, coord_2)
-    player_game_board[coord_1] = true
-    player_game_board[coord_2] = true
-  end
-
   def validate_coord_1(coord_1)
     if @player_game_board.include?(player_game_board[coord_1])
       player_game_board[coord_1] = true
@@ -96,7 +91,6 @@ attr_reader :player_game_board
   end
 
   def check_game_board_for_computer
-    # (need a passive method to check if all of the squares are holding a value of false - if so, then game over) - this method will be used IMMEDIATELY AFTER the player fires, and again after the computer fires.
     if @player_game_board.values.none? do |value|
       value == true
       puts "The game is over! Skynet has conquered, the cake is a lie."

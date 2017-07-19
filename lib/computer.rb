@@ -28,9 +28,9 @@ attr_reader
 
   def first_ship
     board_key_array = []
-    @computer_game_board.each_key do |key|
+      @computer_game_board.each_key do |key|
       board_key_array << key
-    end
+      end
     coord_1 = board_key_array.sample
     coord_2 = second_coord[coord_1].sample
     @computer_game_board[coord_1] = true
@@ -41,14 +41,15 @@ attr_reader
   def second_ship
     board_key_array = []
     coord_1, coord_2 = first_ship
-    @computer_game_board.each_key do |key|
-      if key == false
+      @computer_game_board.each_key do |key|
+        if key == false
         board_key_array << key
+        end
       end
-    end
     ship_2_coord_1 = board_key_array.sample
     @computer_game_board[ship_2_coord_1] = true
-    last_2_coords = third_coord[ship_2_coord_1].sample unless @computer_game_board[last_2_coords[0]] == false || @computer_game_board[last_2_coords[1]] == false
+      last_2_coords = third_coord[ship_2_coord_1].sample unless @computer_game_board[last_2_coords[0]] == false || @computer_game_board[last_2_coords[1]] == false
+      end
     @computer_game_board[last_2_coords[0]] = true
     @computer_game_board[last_2_coords[1]] = true
   end
@@ -65,10 +66,10 @@ attr_reader
       puts "You already fired there dumbass"
     else coord = "H"
       puts "hit!"
+    end
   end
 
   def check_game_board_for_player
-    # (need a passive method to check if all of the squares are holding a value of false - if so, then game over) - this method will be used IMMEDIATELY AFTER the player fires, and again after the computer fires.
     if @computer_game_board.values.none? do |value|
       value == true
       puts "The game is over! You won! Are you proud of yourself now?"
@@ -76,5 +77,6 @@ attr_reader
     else
       #do nothing
     end
+  end
 
 end

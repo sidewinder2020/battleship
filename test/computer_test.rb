@@ -12,4 +12,5 @@ class ComputerTest < Minitest::Test
   def test_grid_exists
     assert_instance_of Hash, @computer.computer_game_board
   end
+
 end

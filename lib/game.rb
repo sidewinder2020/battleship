@@ -62,6 +62,7 @@ attr_accessor :computer, :player
   def show_map_to_player_after_player_shot
     # indicate hit or miss - show updated map [hit becomes 'H', miss becomes 'M']
     player_needs_to_hit_enter_msg
+    enter = gets.chomp
   end
 
   def computer_fire_sequence(coord)
@@ -75,5 +76,3 @@ attr_accessor :computer, :player
   end
 
 end
-
-  # (need a passive method to iterate through an array of the ship's coords and check if any are true) - if there are any true values, do nothing, if there aren't, put 2 - space ship is sunk
