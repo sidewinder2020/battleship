@@ -76,10 +76,9 @@ attr_accessor :computer_game_board
   def check_game_board_for_player
     total_hs = @computer_game_board.values.count("H")
     if total_hs == 5
-      puts "The game is over! You won! Are you proud of yourself now? Do you want a cookie?"
-      exit
+      true
     else
-      #do nothing
+      false
     end
   end
 

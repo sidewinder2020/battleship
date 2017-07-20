@@ -9,20 +9,32 @@ module Messages
   end
 
   def comp_places_ships_msg
+    puts "                                                                                 "
     puts "Computer ships have been placed. Please place your first 2-space ship coordinate:"
+    puts "                                                                                 "
   end
 
   def player_prompted_for_3rd_ship_msg
-    "Ok, you've placed your first ship, now it's time to place your second.  This one will take up 3 spaces, and requires 3 coordinates.  The coordinates must be:/n
-    -next to eachother/n -in a horizontal OR vertical line/n -entered in the order in which they appear on the board/n ex: A1 B1 C1/n  You CANNOT overlap your ships."
+    puts "    "
+    puts "Ok, you've placed your first ship, now it's time to place your second.  This one will take up 3 spaces, and requires 3 coordinates.  The coordinates must be:"
+    puts "-next to eachother"
+    puts "-in a horizontal OR vertical line"
+    puts "-entered in the order in which they appear on the board"
+    puts "-ONE AT A TIME, then press enter to enter the next coordinate"
+    puts "-You CANNOT overlap your ships."
+    puts "     "
   end
 
   def game_begins_msg
-    puts "You have placed all your ships, and now.../n the game begins."
+    puts "                                                            "
+    puts "You have placed all your ships, and now... THE GAME BEGINS!."
+    puts "                                                            "
   end
-  
+
   def player_needs_to_hit_enter_msg
-    "Please hit enter to continue, and for the computer's turn to begin."
+    puts "                                                                   "
+    puts "Please hit enter to continue, and for the computer's turn to begin."
+    puts "                                                                   "
   end
 
 end

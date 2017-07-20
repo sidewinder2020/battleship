@@ -51,8 +51,6 @@ attr_accessor :computer, :player
   game_begins_msg
   end
 
-  # game begins
-
   def player_fire_sequence(coord)
   # display map, from player's point of view, and prompt player for position on which to fire
     computer.shoot(coord)
@@ -63,13 +61,11 @@ attr_accessor :computer, :player
   end
 
   def show_map_to_player_after_player_shot
-    # indicate hit or miss - show updated map [hit becomes 'H', miss becomes 'M']
     player_needs_to_hit_enter_msg
     enter = gets.chomp
   end
 
   def computer_fire_sequence(coord)
-  # computer fires @ random
     player.shoot(coord)
   end
 
@@ -79,6 +75,30 @@ attr_accessor :computer, :player
 
   def show_map_to_player_after_computer_shot
     #show map to player after computer shot
+  end
+
+  def fire_sequence
+    player_needs_to_hit_enter_msg
+    enter = gets.chomp
+    puts "                                  "
+    puts "Please enter your shot coordinate."
+    puts "                                  "
+    coord = gets.chomp
+    computer.shoot(coord)
+    until computer.check_game_board_for_player == true
+    player.shoot(coord)
+    until player.check_game_board_for_computer == true
+  end
+
+  def check_who_won
+    if computer.check_game_board_for_player == true
+      puts "                                                                               "
+      puts "You won! Congratulations, are you proud of yourself? What do ya want, a cookie?"
+      puts "                                                                               "
+    else
+      puts "                                                "
+      puts "FATALITY! Skynet is active, the cake is a lie..."
+      puts "                                                "
   end
 
 end

@@ -85,10 +85,9 @@ attr_accessor :player_game_board
   def check_game_board_for_computer
     total_hs = @player_game_board.values.count("H")
     if total_hs == 5
-      puts "Fatality! Skynet is alive, the cake is a lie."
-      exit
+      true
     else
-      #do nothing
+      false
     end
   end
 
