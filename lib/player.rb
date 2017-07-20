@@ -96,23 +96,26 @@ attr_accessor :player_game_board
     end
   end
 
-  def show_player_map
-    if @player_game_board.values == false
-         p 💧
-    elsif @player_game_board.values == true
-         p 💧
-    elsif @player_game_board.values == "H"
-         p 💢
-    elsif @player_game_board.values == "M"
-         p 😭
+  def game_placer(position)
+    if @computer_game_board[position] == false
+      "💧"
+    elsif @computer_game_board[position] == true
+      "💧"
+    elsif @computer_game_board[position] == "H"
+      "💢"
+    elsif @computer_game_board[position] == "M"
+      "😭"
     end
-    top           =  "-------------------"
-    columns        = [".", "  1  ", "  2  ", "  3  ", "  4  "].join
-    a_row         = ["A", @player_game_board["A1"], @player_game_board["A2"], @player_game_board["A3"], @player_game_board["A4"]].join
-    b_row         = ["B", @player_game_board["B1"], @player_game_board["B2"], @player_game_board["B3"], @player_game_board["B4"]].join
-    c_row         = ["C", @player_game_board["C1"], @player_game_board["C2"], @player_game_board["C3"], @player_game_board["C4"]].join
-    d_row         = ["D", @player_game_board["D1"], @player_game_board["D2"], @player_game_board["D3"], @player_game_board["D4"]].join
-    bottom        = "--------------------"
+  end
+
+  def show_player_map
+    top         =  "-------------------"
+    columns     = ["🛳", "  1  ", "  2  ", "  3  ", "  4  "].join
+    a_row       = ["A", "  " + game_placer("A1") + "  ", "  " + game_placer("A2") + "  ", "  " + game_placer("A3") + "  ", "  " + game_placer("A4") + "  "].join
+    b_row       = ["B", "  " + game_placer("B1") + "  ", "  " + game_placer("B2") + "  ", "  " + game_placer("B3") + "  ", "  " + game_placer("B4") + "  "].join
+    c_row       = ["C", "  " + game_placer("C1") + "  ", "  " + game_placer("C2") + "  ", "  " + game_placer("C3") + "  ", "  " + game_placer("C4") + "  "].join
+    d_row       = ["D", "  " + game_placer("D1") + "  ", "  " + game_placer("D2") + "  ", "  " + game_placer("D3") + "  ", "  " + game_placer("D4") + "  "].join
+    bottom      = "--------------------"
     print "\n#{top}\n#{columns}\n#{a_row}\n#{b_row}\n#{c_row}\n#{d_row}\n#{bottom}\n\n"
   end
 end

@@ -15,9 +15,10 @@ attr_accessor :computer, :player
 
   def start_game
     opening_message
-    player_choice =  "p"
+    player_choice =  gets.chomp
     if player_choice == "p"
       puts "Lllllet's get ready to rumble!"
+      puts "    "
       comp_places_ships
     elsif player_choice == "i"
       instructions
@@ -62,7 +63,7 @@ attr_accessor :computer, :player
       player_needs_to_hit_enter_msg
       enter = gets.chomp
       player.shoot
-      # player.show_player_map
+      player.show_player_map
       player_needs_hit_enter_for_computers_turn_to_end_msg
       enter = gets.chomp
     end

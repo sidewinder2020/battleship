@@ -15,7 +15,7 @@ puts "                                                       "
 
 
 puts "I ask you your name so that I may shout it when you are sacrificed to our gods."
-name = "bob"
+name = gets.chomp
 puts "Great, #{name}! Let's get this slaughter started..."
 
 
@@ -24,19 +24,19 @@ game.start_game
 
 
 
-coord_1 = "A1"
+coord_1 = gets.chomp
 puts "Please enter your second coordinate! (capital letter please, followed by the number)"
-coord_2 = "A2"
+coord_2 = gets.chomp
 game.player_places_ships(coord_1, coord_2)
 
 
 
 puts "Great! Now, please place your third ship, one coordinate at a time.  1st coordinate please:"
-coord_1 = "D2"
+coord_1 = gets.check_game_board_for_computer_runner
 puts "Second coordinate please:"
-coord_2 = "D3"
+coord_2 = gets.chomp
 puts "Almost there, last coordinate please:"
-coord_3 = "D4"
+coord_3 = gets.chomp
 game.player_places_second_ship(coord_1, coord_2, coord_3)
 
 game.fire_sequence
