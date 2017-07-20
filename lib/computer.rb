@@ -1,3 +1,6 @@
+require 'pry'
+
+
 class Computer
 attr_accessor :computer_game_board
 
@@ -41,37 +44,40 @@ attr_accessor :computer_game_board
   def second_ship
     board_key_array = []
     coord_1, coord_2 = first_ship
-      @computer_game_board.each_key do |key|
-        if key == false
-        board_key_array << key
+      @computer_game_board.each do |key|
+        if key[1] == false
+        board_key_array << key[0]
         end
       end
     ship_2_coord_1 = board_key_array.sample
     @computer_game_board[ship_2_coord_1] = true
-      last_2_coords = third_coord[ship_2_coord_1].sample unless @computer_game_board[last_2_coords[0]] == false || @computer_game_board[last_2_coords[1]] == false
+    last_2_coords = third_coord[ship_2_coord_1].sample
+      while @computer_game_board[last_2_coords[0]] || @computer_game_board[last_2_coords[1]]
+        last_2_coords = third_coord[ship_2_coord_1].sample
       end
     @computer_game_board[last_2_coords[0]] = true
     @computer_game_board[last_2_coords[1]] = true
   end
-  # only call second_ship within game file, it will also place first ship
 
   def shoot(coord)
     if coord == false
       coord = "M"
       puts "miss!"
-    elsif !@computer_game_board.include?[coord]
+    elsif !@computer_game_board.include?(coord)
       puts "THAT'S NOT EVEN A COORDINATE!"
     elsif coord == "M"
       puts "You already fired there dumbass"
-    else coord = "H"
+    else
+      coord = "H"
       puts "hit!"
     end
   end
 
   def check_game_board_for_player
     if @computer_game_board.values.none? do |value|
-      value == true
-      puts "The game is over! You won! Are you proud of yourself now?"
+          value == true
+      end
+      puts "The game is over! You won! Are you proud of yourself now? Do you want a cookie?"
       exit
     else
       #do nothing

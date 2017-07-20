@@ -29,17 +29,15 @@ attr_accessor :player_game_board
   end
 
   def validate_coord_1(coord_1)
-    if @player_game_board.include?(player_game_board[coord_1])
+    if @player_game_board.keys.include?(coord_1)
       player_game_board[coord_1] = true
     else
-      false
       puts "Pick a place on the board, buttmunch"
     end
   end
 
   def validate_coord_2(coord_1, coord_2)
-    if !@player_game_board.include?[coord_2] || [coord_1] == [coord_2] || second_coord[coord_1].none? { |coord| coord == coord_2 }
-      return
+    if !@player_game_board.keys.include?(coord_2) || coord_1 == coord_2 || second_coord[coord_1].none? { |coord| coord == coord_2 }
         puts "That is not a valid coordinate"
     else
       player_game_board[coord_2] = true
@@ -47,8 +45,7 @@ attr_accessor :player_game_board
   end
 
   def validate_ship_2_coord_1(coord_1)
-    if !@player_game_board.include?[coord_1] || @player_game_board[coord_1] == true
-      return
+    if !@player_game_board.include?(coord_1) || @player_game_board[coord_1] == true
         puts "Try again, land-lubber!"
     else
       @player_game_board[coord_1] = true
@@ -56,16 +53,15 @@ attr_accessor :player_game_board
   end
 
   def validate_ship_2_coord_2(coord_1, coord_2)
-    if !@player_game_board.include?[coord_2] || [coord_1] == [coord_2] || second_coord[coord_1].none? { |coord| coord == coord_2 } || @player_game_board[coord_2] == true
-      return
+    if !@player_game_board.include?(coord_2) || coord_1 == coord_2 || second_coord[coord_1].none? { |coord| coord == coord_2 } || @player_game_board[coord_2] == true
         puts "That is not a valid coordinate"
     else
       @player_game_board[coord_2] = true
+    end
   end
 
   def validate_ship_2_coord_3(coord_1, coord_2, coord_3)
-    if !@player_game_board.include?[coord_3] || coord_1 == coord_3 || coord_2 == coord_3 || @player_game_board[coord_3] == true || third_coord[coord_1].none? { |coord| coord == coord_3}
-      return
+    if !@player_game_board.include?(coord_3) || coord_1 == coord_3 || coord_2 == coord_3 || @player_game_board[coord_3] == true
       puts "not a valid coord"
     else
       @player_game_board[coord_3] = true
@@ -73,14 +69,10 @@ attr_accessor :player_game_board
   end
 
   def shoot(coord)
-    board_key_array = []
-    @player_game_board.each_key do |key|
-      board_key_array << key
-    end
-    coord = board_key_array.sample
+    coord = @player_game_board[coord]
     if coord == false
       coord = "M"
-      puts "miss!"
+      puts "Miss!"
     elsif coord == "M"
       puts "Missed again!"
     elsif coord == "H"
@@ -88,15 +80,20 @@ attr_accessor :player_game_board
     else
       coord = "H"
       puts "hit!"
+    end
   end
 
   def check_game_board_for_computer
-    if @player_game_board.values.none? do |value|
-      value == true
+    total_hs = 0
+    if @player_game_board.values.count("H") do |value|
+
+    end
       puts "Fatality! Skynet has conquered, the cake is a lie."
       exit
     else
       #do nothing
     end
+  end
+
 
 end

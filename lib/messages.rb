@@ -9,7 +9,7 @@ module Messages
   end
 
   def comp_places_ships_msg
-    puts "Computer ships have been placed./n Please place your first 2-space ship following the pattern: A1 B1 (or your first and second coordinates with a space separating them)."
+    puts "Computer ships have been placed. Please place your first 2-space ship coordinate:"
   end
 
   def player_prompted_for_3rd_ship_msg
@@ -20,11 +20,7 @@ module Messages
   def game_begins_msg
     puts "You have placed all your ships, and now.../n the game begins."
   end
-
-  def request_fire_coordinate_from_player_msg
-    puts "You "
-  end
-
+  
   def player_needs_to_hit_enter_msg
     "Please hit enter to continue, and for the computer's turn to begin."
   end

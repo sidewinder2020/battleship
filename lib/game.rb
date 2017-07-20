@@ -1,8 +1,9 @@
 require 'pry'
 require './lib/computer'
 require './lib/player'
+require './lib/messages'
 
-include messages.rb
+include Messages
 
 class Game
 attr_accessor :computer, :player
@@ -14,7 +15,7 @@ attr_accessor :computer, :player
 
   def start_game
     opening_message
-    player_choice = gets.chomp
+    player_choice =  "p"
     if player_choice == "p"
       puts "Lllllet's get ready to rumble!"
       comp_places_ships
@@ -23,7 +24,7 @@ attr_accessor :computer, :player
     elsif player_choice == "q"
       exit
     else
-      "Wrong sucka! Try again!"
+      puts "Wrong sucka! Try again!"
     end
   end
 
@@ -54,8 +55,6 @@ attr_accessor :computer, :player
 
   def player_fire_sequence(coord)
   # display map, from player's point of view, and prompt player for position on which to fire
-  request_fire_coordinate_from_player_msg
-  coord = gets.chomp
   computer.shoot(coord)
   end
 
