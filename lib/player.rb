@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'pry'
 
 class Player
@@ -90,20 +92,20 @@ attr_accessor :player_game_board
   def check_game_board_for_computer
     total_hs = @player_game_board.values.count("H")
     if total_hs == 5
-      true
+       true
     else
-      false
+       false
     end
   end
 
   def game_placer(position)
-    if @computer_game_board[position] == false
+    if    @player_game_board[position] == false
       "💧"
-    elsif @computer_game_board[position] == true
-      "💧"
-    elsif @computer_game_board[position] == "H"
+    elsif @player_game_board[position] == true
+      "⚜️"
+    elsif @player_game_board[position] == "H"
       "💢"
-    elsif @computer_game_board[position] == "M"
+    elsif @player_game_board[position] == "M"
       "😭"
     end
   end

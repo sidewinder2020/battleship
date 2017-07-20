@@ -1,5 +1,6 @@
+require 'simplecov'
+SimpleCov.start
 require 'pry'
-
 
 class Computer
 attr_accessor :computer_game_board
@@ -57,6 +58,7 @@ attr_accessor :computer_game_board
       end
     @computer_game_board[last_2_coords[0]] = true
     @computer_game_board[last_2_coords[1]] = true
+
   end
 
   def shoot(coord)

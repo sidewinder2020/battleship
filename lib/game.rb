@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'pry'
 require './lib/computer'
 require './lib/player'
@@ -17,35 +19,33 @@ attr_accessor :computer, :player
     opening_message
     player_choice =  gets.chomp
     if player_choice == "p"
-      puts "Lllllet's get ready to rumble!"
-      puts "    "
       comp_places_ships
+      puts "                                                                      "
+      puts "----------!!!!!!!!! Lllllet's get ready to rumble !!!!!!!!!!----------"
+      puts "                                                                      "
+      puts "Computer ships have been placed. Please place your first 2-space ship coordinate ( capital letter followed by one number, no spaces ):"
     elsif player_choice == "i"
       instructions
+      start_game
     elsif player_choice == "q"
       exit
     else
       puts "Wrong sucka! Try again!"
+      start_game
     end
   end
 
   def comp_places_ships
-  # computer places ships, validates both
-  # notifies player that computer ships have been placed, prompts player for coords for 2-space ship
   computer.second_ship
-  comp_places_ships_msg
   end
 
   def player_places_ships(coord_1, coord_2)
-  # coords for 2-space ship are entered and validated
-  # prompts player for coords for 3-space ship
   player.validate_coord_1(coord_1)
   player.validate_coord_2(coord_1, coord_2)
   player_prompted_for_3rd_ship_msg
   end
 
   def player_places_second_ship(coord_1, coord_2, coord_3)
-  # coords for 3-space ship are entered and validated
   player.validate_ship_2_coord_1(coord_1)
   player.validate_ship_2_coord_2(coord_1, coord_2)
   player.validate_ship_2_coord_3(coord_1, coord_2, coord_3)
@@ -54,6 +54,7 @@ attr_accessor :computer, :player
 
   def fire_sequence
     until player.check_game_board_for_computer == true || computer.check_game_board_for_player == true
+      start = Time.now
       puts "                                  "
       puts "Please enter your shot coordinate."
       puts "                                  "
@@ -67,6 +68,10 @@ attr_accessor :computer, :player
       player_needs_hit_enter_for_computers_turn_to_end_msg
       enter = gets.chomp
     end
+    stop = Time.now
+    time = stop - start
+    puts time
+    check_who_won
   end
 
   def check_who_won
