@@ -59,12 +59,7 @@ attr_accessor :computer_game_board
     @computer_game_board[last_2_coords[1]] = true
   end
 
-  def shoot
-    board_key_array = []
-      @computer_game_board.each_key do |key|
-      board_key_array << key
-      end
-      coord = board_key_array.sample
+  def shoot(coord)
     if @computer_game_board[coord] == false
       @computer_game_board[coord] = "M"
       puts "Miss!"

@@ -59,9 +59,11 @@ attr_accessor :computer, :player
       coord = gets.chomp
       computer.shoot(coord)
       # computer.show_computer_map
+      player_needs_to_hit_enter_msg
+      enter = gets.chomp
       player.shoot
       # player.show_player_map
-      player_needs_to_hit_enter_msg
+      player_needs_hit_enter_for_computers_turn_to_end_msg
       enter = gets.chomp
     end
   end
