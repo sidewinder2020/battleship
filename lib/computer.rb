@@ -83,6 +83,23 @@ attr_accessor :computer_game_board
   end
 
   def show_computer_map
+    if @computer_game_board.values == false
+       puts 💧
+    elsif @computer_game_board.values == true
+       puts 💧
+    elsif @computer_game_board.values == "H"
+       puts 💢
+    elsif @computer_game_board.values == "M"
+       puts 😭
+    end
+    top           =  "-------------------"
+    columns        = [".", "  1  ", "  2  ", "  3  ", "  4  "].join
+    a_row         = ["A", @computer_game_board["A1"], @computer_game_board["A2"], @computer_game_board["A3"], @computer_game_board["A4"]].join
+    b_row         = ["B", @computer_game_board["B1"], @computer_game_board["B2"], @computer_game_board["B3"], @computer_game_board["B4"]].join
+    c_row         = ["C", @computer_game_board["C1"], @computer_game_board["C2"], @computer_game_board["C3"], @computer_game_board["C4"]].join
+    d_row         = ["D", @computer_game_board["D1"], @computer_game_board["D2"], @computer_game_board["D3"], @computer_game_board["D4"]].join
+    bottom        = "--------------------"
+    print "\n#{top}\n#{columns}\n#{a_row}\n#{b_row}\n#{c_row}\n#{d_row}\n#{bottom}\n\n"
   end
 
 end

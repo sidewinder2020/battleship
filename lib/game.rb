@@ -58,7 +58,7 @@ attr_accessor :computer, :player
       puts "                                  "
       coord = gets.chomp
       computer.shoot(coord)
-      # computer.show_computer_map
+      computer.show_computer_map
       player_needs_to_hit_enter_msg
       enter = gets.chomp
       player.shoot
@@ -73,10 +73,12 @@ attr_accessor :computer, :player
       puts "                                                                               "
       puts "You won! Congratulations, are you proud of yourself? What do ya want, a cookie?"
       puts "                                                                               "
+      exit
     else
       puts "                                                "
       puts "FATALITY! Skynet is active, the cake is a lie..."
       puts "                                                "
+      exit
     end
   end
 
