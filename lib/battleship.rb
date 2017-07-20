@@ -35,3 +35,5 @@ game.player_places_second_ship(coord_1, coord_2, coord_3)
 puts "Please enter your shot coordinate."
 coord = gets.chomp
 game.player_fire_sequence(coord)
+
+game.check_game_board_for_computer_runner

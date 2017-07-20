@@ -55,7 +55,7 @@ attr_accessor :computer, :player
 
   def player_fire_sequence(coord)
   # display map, from player's point of view, and prompt player for position on which to fire
-  computer.shoot(coord)
+    computer.shoot(coord)
   end
 
   def check_game_board_for_player_runner

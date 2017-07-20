@@ -69,26 +69,23 @@ attr_accessor :player_game_board
   end
 
   def shoot(coord)
-    coord = @player_game_board[coord]
-    if coord == false
-      coord = "M"
+    if @player_game_board[coord] == false
+      @player_game_board[coord] = "M"
       puts "Miss!"
-    elsif coord == "M"
-      puts "Missed again!"
-    elsif coord == "H"
-      puts "Don't worry, skynet already sunk that one."
+    elsif @player_game_board[coord] == "M"
+      puts "You already fired there dumbass"
+    elsif !@player_game_board.include?(coord)
+      puts "THAT'S NOT EVEN A COORDINATE!"
     else
-      coord = "H"
-      puts "hit!"
+      @player_game_board[coord] = "H"
+      puts "Hit!"
     end
   end
 
   def check_game_board_for_computer
-    total_hs = 0
-    if @player_game_board.values.count("H") do |value|
-
-    end
-      puts "Fatality! Skynet has conquered, the cake is a lie."
+    total_hs = @player_game_board.values.count("H")
+    if total_hs == 5
+      puts "Fatality! Skynet is alive, the cake is a lie."
       exit
     else
       #do nothing
@@ -97,3 +94,4 @@ attr_accessor :player_game_board
 
 
 end
+Player.new

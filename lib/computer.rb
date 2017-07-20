@@ -60,23 +60,22 @@ attr_accessor :computer_game_board
   end
 
   def shoot(coord)
-    if coord == false
-      coord = "M"
-      puts "miss!"
+    if @computer_game_board[coord] == false
+      @computer_game_board[coord] = "M"
+      puts "Miss!"
+    elsif @computer_game_board[coord] == "M"
+      puts "You already fired there dumbass"
     elsif !@computer_game_board.include?(coord)
       puts "THAT'S NOT EVEN A COORDINATE!"
-    elsif coord == "M"
-      puts "You already fired there dumbass"
     else
-      coord = "H"
-      puts "hit!"
+      @computer_game_board[coord] = "H"
+      puts "Hit!"
     end
   end
 
   def check_game_board_for_player
-    if @computer_game_board.values.none? do |value|
-          value == true
-      end
+    total_hs = @computer_game_board.values.count("H")
+    if total_hs == 5
       puts "The game is over! You won! Are you proud of yourself now? Do you want a cookie?"
       exit
     else
