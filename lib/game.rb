@@ -51,43 +51,19 @@ attr_accessor :computer, :player
   game_begins_msg
   end
 
-  def player_fire_sequence(coord)
-  # display map, from player's point of view, and prompt player for position on which to fire
-    computer.shoot(coord)
-  end
-
-  def check_game_board_for_player_runner
-    computer.check_game_board_for_player
-  end
-
-  def show_map_to_player_after_player_shot
-    player_needs_to_hit_enter_msg
-    enter = gets.chomp
-  end
-
-  def computer_fire_sequence(coord)
-    player.shoot(coord)
-  end
-
-  def check_game_board_for_computer_runner
-    player.check_game_board_for_computer
-  end
-
-  def show_map_to_player_after_computer_shot
-    #show map to player after computer shot
-  end
-
   def fire_sequence
-    player_needs_to_hit_enter_msg
-    enter = gets.chomp
-    puts "                                  "
-    puts "Please enter your shot coordinate."
-    puts "                                  "
-    coord = gets.chomp
-    computer.shoot(coord)
-    until computer.check_game_board_for_player == true
-    player.shoot(coord)
-    until player.check_game_board_for_computer == true
+    until player.check_game_board_for_computer == true || computer.check_game_board_for_player == true
+      puts "                                  "
+      puts "Please enter your shot coordinate."
+      puts "                                  "
+      coord = gets.chomp
+      computer.shoot(coord)
+      # computer.show_computer_map
+      player.shoot
+      # player.show_player_map
+      player_needs_to_hit_enter_msg
+      enter = gets.chomp
+    end
   end
 
   def check_who_won
@@ -99,6 +75,7 @@ attr_accessor :computer, :player
       puts "                                                "
       puts "FATALITY! Skynet is active, the cake is a lie..."
       puts "                                                "
+    end
   end
 
 end

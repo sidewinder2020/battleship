@@ -1,7 +1,8 @@
 module Messages
 
   def opening_message
-    puts "Welcome to Battleship!/n Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    puts "Welcome to Battleship!"
+    puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit - like a wee, little baby?"
   end
 
   def instructions
@@ -9,7 +10,6 @@ module Messages
   end
 
   def comp_places_ships_msg
-    puts "                                                                                 "
     puts "Computer ships have been placed. Please place your first 2-space ship coordinate:"
     puts "                                                                                 "
   end

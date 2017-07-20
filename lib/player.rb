@@ -91,6 +91,9 @@ attr_accessor :player_game_board
     end
   end
 
+  def show_player_map
+  end
+
 
 end
 Player.new

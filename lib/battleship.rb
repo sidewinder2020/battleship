@@ -39,6 +39,6 @@ puts "Almost there, last coordinate please:"
 coord_3 = "D4"
 game.player_places_second_ship(coord_1, coord_2, coord_3)
 
-game.fire sequence
+game.fire_sequence
 
 game.check_who_won
