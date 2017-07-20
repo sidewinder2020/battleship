@@ -1,5 +1,3 @@
-require 'simplecov'
-SimpleCov.start
 require 'pry'
 
 class Player
@@ -35,12 +33,20 @@ attr_accessor :player_game_board
       player_game_board[coord_1] = true
     else
       puts "Pick a place on the board, buttmunch"
+      coord_1 = gets.chomp
+      validate_coord_1(coord_1)
     end
   end
 
   def validate_coord_2(coord_1, coord_2)
     if !@player_game_board.keys.include?(coord_2) || coord_1 == coord_2 || second_coord[coord_1].none? { |coord| coord == coord_2 }
         puts "That is not a valid coordinate"
+        puts "Please enter the first coordinate again"
+        coord_1 = gets.chomp
+        validate_coord_1(coord_1)
+        puts "Now the second coordinate!"
+        coord_2 = gets.chomp
+        validate_coord_2(coord_1, coord_2)
     else
       player_game_board[coord_2] = true
     end
@@ -49,6 +55,8 @@ attr_accessor :player_game_board
   def validate_ship_2_coord_1(coord_1)
     if !@player_game_board.include?(coord_1) || @player_game_board[coord_1] == true
         puts "Try again, land-lubber!"
+        coord_1 = gets.chomp
+        validate_ship_2_coord_1(coord_1)
     else
       @player_game_board[coord_1] = true
     end
@@ -57,6 +65,12 @@ attr_accessor :player_game_board
   def validate_ship_2_coord_2(coord_1, coord_2)
     if !@player_game_board.include?(coord_2) || coord_1 == coord_2 || second_coord[coord_1].none? { |coord| coord == coord_2 } || @player_game_board[coord_2] == true
         puts "That is not a valid coordinate"
+        puts "Please enter the first coordinate again."
+        coord_1 = gets.chomp
+        validate_ship_2_coord_1(coord_1)
+        puts "The second coordinate, again please..."
+        coord_2 = gets.chomp
+        validate_ship_2_coord_2(coord_1, coord_2)
     else
       @player_game_board[coord_2] = true
     end
@@ -64,7 +78,16 @@ attr_accessor :player_game_board
 
   def validate_ship_2_coord_3(coord_1, coord_2, coord_3)
     if !@player_game_board.include?(coord_3) || coord_1 == coord_3 || coord_2 == coord_3 || @player_game_board[coord_3] == true
-      puts "not a valid coord"
+      puts "NOT A VALID COORDINATE"
+      puts "Please enter the first coordinate again."
+      coord_1 = gets.chomp
+      validate_ship_2_coord_1(coord_1)
+      puts "The second coordinate (sigh), again please..."
+      coord_2 = gets.chomp
+      validate_ship_2_coord_2(coord_1, coord_2)
+      puts "And the final coordinate, one last time."
+      coord_3 = gets.chomp
+      validate_ship_2_coord_3(coord_1, coord_2, coord_3)
     else
       @player_game_board[coord_3] = true
     end
@@ -80,7 +103,7 @@ attr_accessor :player_game_board
       @player_game_board[coord] = "M"
       puts "Miss!"
     elsif @player_game_board[coord] == "M"
-      puts "You already fired there dumbass"
+      puts "I thought computers were supposed to be intelligent...you already fired there dumbass!"
     elsif !@player_game_board.include?(coord)
       puts "THAT'S NOT EVEN A COORDINATE!"
     else

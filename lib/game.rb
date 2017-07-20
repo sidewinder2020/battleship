@@ -1,5 +1,3 @@
-require 'simplecov'
-SimpleCov.start
 require 'pry'
 require './lib/computer'
 require './lib/player'
@@ -23,7 +21,7 @@ attr_accessor :computer, :player
       puts "                                                                      "
       puts "----------!!!!!!!!! Lllllet's get ready to rumble !!!!!!!!!!----------"
       puts "                                                                      "
-      puts "Computer ships have been placed. Please place your first 2-space ship coordinate ( capital letter followed by one number, no spaces ):"
+      puts "Computer ships have been placed. Please place your first 2-space ship coordinate (ex:C2):"
     elsif player_choice == "i"
       instructions
       start_game
@@ -39,18 +37,12 @@ attr_accessor :computer, :player
   computer.second_ship
   end
 
-  def player_places_ships(coord_1, coord_2)
-  player.validate_coord_1(coord_1)
-  player.validate_coord_2(coord_1, coord_2)
-  player_prompted_for_3rd_ship_msg
-  end
-
-  def player_places_second_ship(coord_1, coord_2, coord_3)
-  player.validate_ship_2_coord_1(coord_1)
-  player.validate_ship_2_coord_2(coord_1, coord_2)
-  player.validate_ship_2_coord_3(coord_1, coord_2, coord_3)
-  game_begins_msg
-  end
+  # def player_places_second_ship(coord_1, coord_2, coord_3)
+  # player.validate_ship_2_coord_1(coord_1)
+  # player.validate_ship_2_coord_2(coord_1, coord_2)
+  # player.validate_ship_2_coord_3(coord_1, coord_2, coord_3)
+  # game_begins_msg
+  # end
 
   def fire_sequence
     until player.check_game_board_for_computer == true || computer.check_game_board_for_player == true
